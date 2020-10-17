@@ -30,7 +30,8 @@
 # print (dict_one)
 
 # value
-
+dict_one["person"]['hobby'] = "Programming"
+dict_one = {"person": {"first_name": "Danny", "last_name": "Oh", }}
 # dict_one = {"name": "Danny", "another_name": "Danny"}
 # print (dict_one)
 #
@@ -132,13 +133,13 @@ dict_one = {
 
 # print (len(dict_one["individuals"][0]))
 
+
 print ("individuals" in dict_one)
 
 
+dict_one = {"name": "Danny"}
 
-
-
-
+dict_one = dict()
 
 
 
