@@ -49,31 +49,31 @@ def print_weekly_stats(first_name, hours_worked, hours_excercised, hours_eating,
     print("You've spent {} hours eating".format(hours_eating))
     print("You've slept {} hours sleeping".format(hours_sleeping))
 
-# print_weekly_stats("Danny", 40, 5, 6, 40)
-# print_weekly_stats("John", 50, 4, 10, 35)
-# print_weekly_stats("Paul", 3, 1.2, 4, 41)
-# print_weekly_stats("Lee", 10, 0, 7, 70)
-# print_weekly_stats("Bryan", 36, 3, 7, 30)
-# print_weekly_stats("Eddy", 32, 3, 7, 30)
+print_weekly_stats("Danny", 40, 5, 6, 40)
+print_weekly_stats("John", 50, 4, 10, 35)
+print_weekly_stats("Paul", 3, 1.2, 4, 41)
+print_weekly_stats("Lee", 10, 0, 7, 70)
+print_weekly_stats("Bryan", 36, 3, 7, 30)
+print_weekly_stats("Eddy", 32, 3, 7, 30)
 
 # PI * r^2
 
-def find_area_of_circle(radius):
-    """
-    Finds the area of circle
-    :param radius:
-    :return:
-    """
-    PI = 3.142
-    result = PI * (radius * radius)
-    return result
-    print (result)
-
-
-print (find_area_of_circle(5))
-
-
-
+# def find_area_of_circle(radius):
+#     """
+#     Finds the area of circle
+#     :param radius:
+#     :return:
+#     """
+#     PI = 3.142
+#     result = PI * (radius * radius)
+#     return result
+#     print (result)
+#
+#
+# print (find_area_of_circle(5))
+#
+#
+#
 
 
 
