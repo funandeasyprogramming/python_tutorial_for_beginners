@@ -79,14 +79,18 @@ def convert_unit():
         from_unit = user_input.get("from_unit").upper()
         to_unit = user_input.get("to_unit").upper()
 
-        if from_unit == "KM":
-            pass
-        elif from_unit == "M":
-            pass
-        elif from_unit == "CM":
-            pass
-        elif from_unit == "MM":
-            pass
+        if not (from_unit in standard_unit_mapper or
+                to_unit in standard_unit_mapper):
+            print ("We only allow following units: {}"
+                   .format(", ".join(standard_unit_mapper.keys())))
+
+        else:
+            converted_value = standard_unit_mapper[to_unit] * number / \
+                              standard_unit_mapper[from_unit]
+            result = "{} {} is {} {}".format(number, from_unit, converted_value, to_unit)
+            # Standard unit mapper approach.
+
+            print(result)
 
 
 convert_unit()
