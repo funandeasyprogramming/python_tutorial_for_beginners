@@ -52,16 +52,20 @@
 
 def get_user_input():
     print("MENU 1) Unit Conversion  2) Quit")
-    menu = int(input("Choose an option from the MENU: "))
+    try:
+        menu = int(input("Choose an option from the MENU: "))
+        if menu == 1:
+            number = float(input("Enter a number: "))
+            from_unit = input("Enter the From Unit: ")
+            to_unit = input("Enter the To Unit: ")
+            return {"menu": menu, "number": number,
+                    "from_unit": from_unit, "to_unit": to_unit}
+        elif menu == 2:
+            return {"menu": menu}
 
-    if menu == 1:
-        number = float(input("Enter a number: "))
-        from_unit = input("Enter the From Unit: ")
-        to_unit = input("Enter the To Unit: ")
-        return {"menu": menu, "number": number,
-                "from_unit": from_unit, "to_unit": to_unit}
-    elif menu == 2:
-        return {"menu": menu}
+    except ValueError as e:
+        print ("MENU and number only takes integer values")
+        return get_user_input()
 
 
 standard_unit_mapper = {"M": 1, "KM": 0.001,
@@ -71,26 +75,41 @@ standard_unit_mapper = {"M": 1, "KM": 0.001,
 
 
 def convert_unit():
-    while True:
-        user_input = get_user_input()
-        if user_input.get("menu") == 2:
-            break
-        number = user_input.get("number")
-        from_unit = user_input.get("from_unit").upper()
-        to_unit = user_input.get("to_unit").upper()
+    try:
+        while True:
+            user_input = get_user_input()
 
-        if not (from_unit in standard_unit_mapper or
-                to_unit in standard_unit_mapper):
-            print ("We only allow following units: {}"
-                   .format(", ".join(standard_unit_mapper.keys())))
+            # if not user_input:
+            #     print("MENU only takes 1 or 2")
+            #     return convert_unit()
 
-        else:
-            converted_value = standard_unit_mapper[to_unit] * number / \
-                              standard_unit_mapper[from_unit]
-            result = "{} {} is {} {}".format(number, from_unit, converted_value, to_unit)
-            # Standard unit mapper approach.
+            try:
+                if user_input.get("menu") == 2:
+                    break
+            except AttributeError as e:
+                print ("MENU only takes 1 or 2")
+                return convert_unit()
 
-            print(result)
+            number = user_input.get("number")
+            from_unit = user_input.get("from_unit").upper()
+            to_unit = user_input.get("to_unit").upper()
+
+            if not (from_unit in standard_unit_mapper or
+                    to_unit in standard_unit_mapper):
+                print("We only allow following units: {}"
+                      .format(", ".join(standard_unit_mapper.keys())))
+
+            else:
+                converted_value = standard_unit_mapper[to_unit] * number / \
+                                  standard_unit_mapper[from_unit]
+                result = "{} {} is {} {}".format(number, from_unit, converted_value, to_unit)
+                # Standard unit mapper approach.
+
+                print(result)
+    except KeyboardInterrupt:
+        print ("\nSomeone manually quit the program")
+
+
 
 
 convert_unit()
